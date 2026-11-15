@@ -1,0 +1,11 @@
+# Khusus UJI LOKAL (jangan dipakai Jenkins).
+# Menimpa service app agar image dibangun dari Dockerfile di folder ini,
+# berguna saat image belum ada di Docker Hub.
+#
+#   docker compose -f compose.yaml -f compose.local.yaml up -d --build
+
+services:
+    app:
+        build:
+            context: .
+            target: production
