@@ -1,0 +1,35 @@
+# --- Git & CI ---
+.git
+.github
+.gitignore
+.gitattributes
+
+# --- Rahasia: JANGAN PERNAH masuk ke image ---
+.env
+.env.*
+auth.json
+
+# --- Dependency & hasil build (dibuat ulang di dalam image) ---
+vendor
+node_modules
+public/build
+public/hot
+public/storage
+
+# --- Cache & log runtime ---
+storage/logs/*.log
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*.php
+storage/framework/testing/*
+bootstrap/cache/*.php
+
+# --- File pengembangan / dokumentasi ---
+.idea
+.vscode
+*.md
+Jenkinsfile
+Dockerfile
+.dockerignore
+compose*.yaml
+
