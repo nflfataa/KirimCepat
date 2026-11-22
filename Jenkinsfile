@@ -57,8 +57,8 @@ pipeline {
                     set "PATH=C:\\Docker;C:\\Users\\AXIOO\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;%PATH%"
                     set "DOCKER_HOST=tcp://localhost:2375"
                     if not exist .env copy .env.example .env
-                    docker compose pull app 2>nul
-                    docker compose up -d 2>nul || docker start kirimcepat-db kirimcepat-app
+                    docker compose pull 2>nul
+                    docker compose up -d
                 '''
             }
         }
