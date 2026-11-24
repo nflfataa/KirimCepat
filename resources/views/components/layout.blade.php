@@ -37,10 +37,9 @@
                     <div class="nav-links">
                         <a href="{{ route('home') }}">Beranda</a>
                         <a href="{{ route('shipments.create') }}" @if (request()->routeIs('shipments.*')) aria-current="page" @endif>Kirim paket</a>
-                        @if (! request()->routeIs('shipments.*'))
+                        @if (! request()->routeIs('shipments.*') && ! request()->routeIs('kurir.*'))
                             <a href="{{ route('track.index') }}" @if (request()->routeIs('track.*')) aria-current="page" @endif>Lacak resi</a>
                         @endif
-                        <a href="{{ route('home') }}#tarif">Tarif zona</a>
                     </div>
 
                     <div class="nav-actions">
@@ -105,10 +104,9 @@
                 <nav class="footer-nav" aria-label="Tautan footer">
                     <a href="{{ route('home') }}">Beranda</a>
                     <a href="{{ route('shipments.create') }}">Kirim paket</a>
-                    @if (! request()->routeIs('shipments.*'))
+                    @if (! request()->routeIs('shipments.*') && ! request()->routeIs('kurir.*'))
                         <a href="{{ route('track.index') }}">Lacak resi</a>
                     @endif
-                    <a href="{{ route('home') }}#tarif">Tarif zona</a>
                     <a href="{{ route('kurir.masuk') }}">Masuk kurir</a>
                     <a href="{{ url('/health') }}">Status sistem</a>
                 </nav>

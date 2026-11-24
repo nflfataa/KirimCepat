@@ -387,10 +387,32 @@ function bindSmoothScroll() {
         const target = document.querySelector(href);
         if (target) {
             event.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            const targetY = target.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+
+            if (href === '#lacak') {
+                const resiInput = target.querySelector('#resi');
+                if (resiInput) {
+                    setTimeout(() => {
+                        resiInput.focus({ preventScroll: true });
+                    }, 450);
+                }
+            }
+
             history.pushState(null, '', href);
         }
     });
+
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+            setTimeout(() => {
+                const targetY = target.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
+            }, 100);
+        }
+    }
 }
 
 function bindSampleCalculator() {

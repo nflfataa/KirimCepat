@@ -13,20 +13,21 @@
         <div class="app-container w-full max-w-[1440px] bg-white rounded-[1.5rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.06)] flex flex-col">
             
             <header class="w-full px-6 sm:px-10 lg:px-12 py-7 sm:py-8 border-b border-neutral-100">
-                <nav class="flex items-center justify-between" aria-label="Navigasi landing">
+                <nav class="relative flex items-center justify-between min-h-[46px]" aria-label="Navigasi landing">
                     <div class="hidden md:flex items-center space-x-7 text-sm font-medium text-black">
                         <a href="#lacak" class="hover:opacity-70 transition">Lacak Paket</a>
+                        <a href="#tarif" class="hover:opacity-70 transition">Tarif Zona</a>
                         <a href="#bantuan" class="hover:opacity-70 transition">Bantuan</a>
                     </div>
 
-                    <a href="{{ route('home') }}" class="flex flex-col items-center justify-center group focus:outline-none">
+                    <a href="{{ route('home') }}" class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center justify-center group focus:outline-none z-10" aria-label="KirimCepat Beranda">
                         <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                         </svg>
                         <span class="text-xs sm:text-sm font-black tracking-[0.24em] uppercase text-black mt-1">KirimCepat</span>
                     </a>
 
-                    <div class="flex items-center space-x-4 sm:space-x-6 text-sm font-medium">
+                    <div class="flex items-center space-x-4 sm:space-x-6 text-sm font-medium ml-auto">
                         <div class="hidden sm:inline-flex items-center gap-1 text-black cursor-default select-none">
                             <span>ID</span>
                             <svg class="w-3 h-3 text-neutral-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -49,12 +50,12 @@
                 <div class="flex md:hidden items-center justify-around mt-4 pt-3 border-t border-neutral-100 text-xs font-medium text-neutral-800">
                     <a href="#ongkir" class="hover:text-black">Cek Ongkir</a>
                     <a href="#lacak" class="hover:text-black">Lacak Paket</a>
+                    <a href="#tarif" class="hover:text-black">Tarif Zona</a>
                     <a href="#alur" class="hover:text-black">Alur Paket</a>
-                    <a href="#tarif" class="hover:text-black">Tarif</a>
                 </div>
             </header>
 
-            <section class="mt-14 sm:mt-24 lg:mt-28 mb-12 sm:mb-16 px-6 text-center flex flex-col items-center">
+            <section class="mt-14 sm:mt-24 lg:mt-28 mb-8 sm:mb-12 px-6 text-center flex flex-col items-center">
                 <h1 class="animate-slide-up text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.05] font-black text-black tracking-tight max-w-5xl">
                     Kirim paket lebih cepat,<br>pantau tanpa ribet.
                 </h1>
@@ -78,20 +79,36 @@
                 </div>
             </section>
 
-            <div class="w-full px-4 sm:px-8 lg:px-12 pb-14 sm:pb-20 animate-slide-delay-3">
-                <img
-                    src="{{ asset('images/fleet.png') }}"
-                    onerror="this.onerror=null;this.src='{{ asset('images/fleet-unsplash.jpg') }}';"
-                    alt="Armada Utama KirimCepat Volvo Trans-Jawa"
-                    width="1290"
-                    height="503"
-                    fetchpriority="high"
-                    decoding="async"
-                    class="w-full h-[320px] sm:h-[460px] md:h-[560px] lg:h-[620px] object-cover rounded-2xl object-center border border-neutral-100 shadow-sm"
-                />
-            </div>
+            <section class="w-full px-4 sm:px-8 lg:px-12 py-16 sm:py-24 min-h-[85vh] sm:min-h-[90vh] flex flex-col justify-center items-center scroll-mt-0 animate-slide-delay-3 bg-white" id="lacak">
+                <div class="max-w-3xl w-full mx-auto text-center" data-scroll-center>
+                    <span class="text-xs font-bold tracking-widest uppercase text-neutral-400">Pelacakan Publik</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold tracking-tight text-black mt-2">Punya nomor resi?</h2>
+                    <p class="text-[#4B5563] text-base sm:text-lg mt-2.5 max-w-xl mx-auto font-normal leading-relaxed">
+                        Masukkan 16 karakter nomor resi untuk melihat posisi paket dan seluruh riwayat pengiriman secara langsung tanpa perlu login.
+                    </p>
 
-            <section class="w-full border-t border-neutral-100 px-6 sm:px-10 lg:px-12 py-16 sm:py-24 bg-white" id="ongkir">
+                    <form class="mt-7 max-w-xl mx-auto flex flex-col sm:flex-row gap-3" method="GET" action="{{ route('track.index') }}" role="search">
+                        <label class="sr-only" for="resi">Nomor resi</label>
+                        <input
+                            class="flex-1 min-h-[50px] sm:min-h-[52px] px-5 sm:px-6 border border-neutral-300 rounded-full font-mono text-base text-black placeholder:text-neutral-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black bg-white shadow-sm"
+                            id="resi"
+                            name="resi"
+                            type="text"
+                            autocomplete="off"
+                            spellcheck="false"
+                            maxlength="24"
+                            placeholder="KC20261123000001"
+                            required
+                        />
+                        <button class="bg-black text-white px-8 py-3.5 rounded-full font-semibold text-sm sm:text-base hover:bg-neutral-800 transition shrink-0 shadow-sm" type="submit">
+                            Lacak Paket
+                        </button>
+                    </form>
+                    <p class="text-xs text-neutral-500 mt-3">Format resi: KC diikuti 14 digit angka tanggal dan nomor urut.</p>
+                </div>
+            </section>
+
+            <section class="w-full border-t border-neutral-100 px-6 sm:px-10 lg:px-12 pt-12 sm:pt-16 pb-16 sm:pb-24 bg-white" id="ongkir">
                 <div class="max-w-6xl mx-auto">
                     <div class="max-w-2xl mb-12 text-left">
                         <span class="text-xs font-bold tracking-widest uppercase text-neutral-400">Kalkulator Akurat</span>
@@ -198,53 +215,6 @@
                 </div>
             </section>
 
-            <section class="w-full border-t border-neutral-100 px-6 sm:px-10 lg:px-12 py-16 sm:py-24 bg-neutral-50" id="lacak">
-                <div class="max-w-4xl mx-auto text-center">
-                    <span class="text-xs font-bold tracking-widest uppercase text-neutral-400">Pelacakan Publik</span>
-                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black mt-2">Punya nomor resi?</h2>
-                    <p class="text-[#4B5563] text-base mt-2 max-w-xl mx-auto">
-                        Masukkan 16 karakter nomor resi untuk melihat posisi paket dan seluruh riwayat pengiriman secara langsung tanpa perlu login.
-                    </p>
-
-                    <form class="mt-8 max-w-xl mx-auto flex flex-col sm:flex-row gap-3" method="GET" action="{{ route('track.index') }}" role="search">
-                        <label class="sr-only" for="resi">Nomor resi</label>
-                        <input
-                            class="flex-1 min-h-[50px] px-5 border border-neutral-300 rounded-full font-mono text-base text-black placeholder-neutral-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black bg-white"
-                            id="resi"
-                            name="resi"
-                            type="text"
-                            autocomplete="off"
-                            spellcheck="false"
-                            maxlength="24"
-                            placeholder="KC20261123000001"
-                            required
-                        />
-                        <button class="bg-black text-white px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-neutral-800 transition" type="submit">
-                            Lacak
-                        </button>
-                    </form>
-                    <p class="text-xs text-neutral-500 mt-3">Format resi: KC diikuti 14 digit angka tanggal dan nomor urut.</p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14 text-left">
-                        <div class="bg-white border border-neutral-200 rounded-2xl p-6 bento-card shadow-sm hover:border-black transition">
-                            <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider block mb-2">01 · AKSES PUBLIK</span>
-                            <strong class="text-black text-base block font-bold">Tanpa Login</strong>
-                            <p class="text-xs text-[#4B5563] mt-1.5 leading-relaxed">Pengirim dan penerima dapat melacak resi kapan pun secara publik dengan nomor resi 16 digit.</p>
-                        </div>
-                        <div class="bg-white border border-neutral-200 rounded-2xl p-6 bento-card shadow-sm hover:border-black transition">
-                            <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider block mb-2">02 · AUDIT LOG</span>
-                            <strong class="text-black text-base block font-bold">Riwayat Kronologis</strong>
-                            <p class="text-xs text-[#4B5563] mt-1.5 leading-relaxed">Setiap perpindahan tercatat lengkap dengan stempel waktu WIB presisi dan nama kurir penanggung jawab.</p>
-                        </div>
-                        <div class="bg-white border border-neutral-200 rounded-2xl p-6 bento-card shadow-sm hover:border-black transition">
-                            <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider block mb-2">03 · PERLINDUNGAN</span>
-                            <strong class="text-black text-base block font-bold">Privasi Terjaga</strong>
-                            <p class="text-xs text-[#4B5563] mt-1.5 leading-relaxed">Nomor telepon dan alamat lengkap tidak dipublikasikan pada halaman pelacakan untuk menjaga privasi.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section class="w-full border-t border-neutral-100 px-6 sm:px-10 lg:px-12 py-16 sm:py-24 bg-white" id="alur">
                 <div class="max-w-6xl mx-auto">
                     <div class="max-w-2xl mb-12">
@@ -332,7 +302,7 @@
                         </div>
 
                         <!-- Card 5: 05 DITERIMA -->
-                        <div class="col-span-1 md:col-span-1 lg:col-span-6 bg-neutral-50 border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
+                        <div class="col-span-1 md:col-span-1 lg:col-span-6 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
                             <div>
                                 <div class="flex items-center justify-between mb-3">
                                     <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">05 · DITERIMA</span>
@@ -358,7 +328,7 @@
                 </div>
             </section>
 
-            <section class="w-full border-t border-neutral-100 px-6 sm:px-10 lg:px-12 py-16 sm:py-24 bg-neutral-50" id="tarif">
+            <section class="w-full border-t border-neutral-100 px-6 sm:px-10 lg:px-12 py-16 sm:py-24 bg-white" id="tarif">
                 <div class="max-w-6xl mx-auto">
                     <div class="max-w-2xl mb-10">
                         <span class="text-xs font-bold tracking-widest uppercase text-neutral-400">Jangkauan & Harga</span>
