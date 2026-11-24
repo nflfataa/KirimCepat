@@ -41,6 +41,47 @@ function emptyState(target, message) {
     target.replaceChildren(paragraph);
 }
 
+function renderSkeleton(target) {
+    const container = document.createElement('div');
+    container.className = 'skeleton-table space-y-3.5 py-2';
+    container.setAttribute('aria-busy', 'true');
+    container.setAttribute('aria-label', 'Menghitung rincian ongkir...');
+
+    const tableMock = document.createElement('div');
+    tableMock.className = 'space-y-3 border-b border-neutral-200 pb-4';
+
+    const rowWidths = [
+        ['w-24', 'w-16'],
+        ['w-28', 'w-20'],
+        ['w-28', 'w-16'],
+        ['w-20', 'w-24'],
+        ['w-24', 'w-28'],
+    ];
+
+    for (let i = 0; i < 5; i++) {
+        const row = document.createElement('div');
+        row.className = 'flex justify-between items-center';
+
+        const label = document.createElement('div');
+        label.className = `skeleton-shimmer h-4 rounded ${rowWidths[i][0]}`;
+
+        const value = document.createElement('div');
+        value.className = `skeleton-shimmer h-4 rounded ${rowWidths[i][1]}`;
+
+        row.append(label, value);
+        tableMock.append(row);
+    }
+
+    const footBar = document.createElement('div');
+    footBar.className = 'skeleton-shimmer h-3.5 rounded w-44 mt-3';
+
+    const btnBar = document.createElement('div');
+    btnBar.className = 'skeleton-shimmer h-11 rounded-full w-full mt-4';
+
+    container.append(tableMock, footBar, btnBar);
+    target.replaceChildren(container);
+}
+
 function showError(target, message) {
     const paragraph = document.createElement('p');
     paragraph.className = 'calc-empty is-error';
@@ -149,7 +190,7 @@ function bindCalculator(form) {
             button.textContent = 'Menghitung…';
         }
 
-        emptyState(target, 'Menghitung ongkir…');
+        renderSkeleton(target);
 
         try {
             renderBreakdown(target, await requestRate(payload, endpointFor(form)), form);
@@ -191,7 +232,7 @@ function bindLiveSummary(form) {
 
         controller?.abort();
         controller = new AbortController();
-        emptyState(target, 'Menghitung ongkir…');
+        renderSkeleton(target);
 
         try {
             renderBreakdown(
@@ -352,8 +393,50 @@ function bindSmoothScroll() {
     });
 }
 
+function bindSampleCalculator() {
+    const sampleButton = document.getElementById('btn-fill-sample');
+    if (!sampleButton) {
+        return;
+    }
+
+    sampleButton.addEventListener('click', () => {
+        const form = sampleButton.closest('form');
+        if (!form) {
+            return;
+        }
+
+        const zoneSelect = form.querySelector('[name="zone_id"]');
+        if (zoneSelect && zoneSelect.options.length > 1) {
+            zoneSelect.selectedIndex = 1;
+        }
+
+        const weightInput = form.querySelector('[name="actual_weight"]');
+        if (weightInput) {
+            weightInput.value = '2.3';
+        }
+
+        const lengthInput = form.querySelector('[name="length"]');
+        if (lengthInput) {
+            lengthInput.value = '20';
+        }
+
+        const widthInput = form.querySelector('[name="width"]');
+        if (widthInput) {
+            widthInput.value = '20';
+        }
+
+        const heightInput = form.querySelector('[name="height"]');
+        if (heightInput) {
+            heightInput.value = '20';
+        }
+
+        form.dispatchEvent(new Event('submit', { cancelable: true }));
+    });
+}
+
 document.querySelectorAll('[data-rate-form]').forEach(bindCalculator);
 document.querySelectorAll('[data-rate-watch]').forEach(bindLiveSummary);
 bindCopyButtons(document.querySelector('[data-announcer]'));
 bindNavigation();
 bindSmoothScroll();
+bindSampleCalculator();

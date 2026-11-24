@@ -15,18 +15,7 @@
             <header class="w-full px-6 sm:px-10 lg:px-12 py-7 sm:py-8 border-b border-neutral-100">
                 <nav class="flex items-center justify-between" aria-label="Navigasi landing">
                     <div class="hidden md:flex items-center space-x-7 text-sm font-medium text-black">
-                        <a href="#ongkir" class="inline-flex items-center gap-1.5 hover:opacity-70 transition">
-                            Cek Ongkir
-                            <svg class="w-3 h-3 text-neutral-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                        <a href="#lacak" class="inline-flex items-center gap-1.5 hover:opacity-70 transition">
-                            Lacak Paket
-                            <svg class="w-3 h-3 text-neutral-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                            </svg>
-                        </a>
+                        <a href="#lacak" class="hover:opacity-70 transition">Lacak Paket</a>
                         <a href="#bantuan" class="hover:opacity-70 transition">Bantuan</a>
                     </div>
 
@@ -46,14 +35,14 @@
                         </div>
 
                         @auth
-                            <a href="{{ route('kurir.dashboard') }}" class="text-neutral-700 hover:text-black transition">Panel Kurir</a>
+                            <a href="{{ route('kurir.dashboard') }}" class="bg-black text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-medium hover:bg-neutral-800 transition shadow-sm">
+                                Panel Kurir
+                            </a>
                         @else
-                            <a href="{{ route('kurir.masuk') }}" class="text-neutral-700 hover:text-black transition">Masuk Kurir</a>
+                            <a href="{{ route('kurir.masuk') }}" class="bg-black text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-medium hover:bg-neutral-800 transition shadow-sm">
+                                Masuk Kurir
+                            </a>
                         @endauth
-
-                        <a href="{{ route('shipments.create') }}" class="bg-black text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-medium hover:bg-neutral-800 transition shadow-sm">
-                            Buat Pengiriman
-                        </a>
                     </div>
                 </nav>
 
@@ -160,6 +149,17 @@
                                 <button class="w-full bg-black text-white py-3.5 px-6 rounded-full font-semibold text-sm hover:bg-neutral-800 transition" type="submit">
                                     Hitung ongkir
                                 </button>
+
+                                <div class="flex items-center justify-between pt-1 text-xs">
+                                    <button
+                                        type="button"
+                                        id="btn-fill-sample"
+                                        class="text-neutral-500 hover:text-black underline font-medium transition cursor-pointer"
+                                    >
+                                        Coba contoh (2.3 kg · 20×20×20 cm)
+                                    </button>
+                                    <span class="text-neutral-400">Volumetrik otomatis</span>
+                                </div>
                             </form>
                         </div>
 
@@ -226,20 +226,20 @@
                     <p class="text-xs text-neutral-500 mt-3">Format resi: KC diikuti 14 digit angka tanggal dan nomor urut.</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14 text-left">
-                        <div class="bg-white border border-neutral-200 rounded-xl p-5">
-                            <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider block mb-1">01</span>
-                            <strong class="text-black text-sm block">Tanpa Login</strong>
-                            <p class="text-xs text-[#4B5563] mt-1 leading-relaxed">Pengirim dan penerima dapat melacak resi kapan pun secara publik.</p>
+                        <div class="bg-white border border-neutral-200 rounded-2xl p-6 bento-card shadow-sm hover:border-black transition">
+                            <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider block mb-2">01 · AKSES PUBLIK</span>
+                            <strong class="text-black text-base block font-bold">Tanpa Login</strong>
+                            <p class="text-xs text-[#4B5563] mt-1.5 leading-relaxed">Pengirim dan penerima dapat melacak resi kapan pun secara publik dengan nomor resi 16 digit.</p>
                         </div>
-                        <div class="bg-white border border-neutral-200 rounded-xl p-5">
-                            <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider block mb-1">02</span>
-                            <strong class="text-black text-sm block">Riwayat Kronologis</strong>
-                            <p class="text-xs text-[#4B5563] mt-1 leading-relaxed">Setiap perpindahan tercatat lengkap dengan waktu dan nama kurir penanggung jawab.</p>
+                        <div class="bg-white border border-neutral-200 rounded-2xl p-6 bento-card shadow-sm hover:border-black transition">
+                            <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider block mb-2">02 · AUDIT LOG</span>
+                            <strong class="text-black text-base block font-bold">Riwayat Kronologis</strong>
+                            <p class="text-xs text-[#4B5563] mt-1.5 leading-relaxed">Setiap perpindahan tercatat lengkap dengan stempel waktu WIB presisi dan nama kurir penanggung jawab.</p>
                         </div>
-                        <div class="bg-white border border-neutral-200 rounded-xl p-5">
-                            <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider block mb-1">03</span>
-                            <strong class="text-black text-sm block">Privasi Terjaga</strong>
-                            <p class="text-xs text-[#4B5563] mt-1 leading-relaxed">Nomor telepon dan alamat lengkap tidak dipublikasikan pada halaman pelacakan.</p>
+                        <div class="bg-white border border-neutral-200 rounded-2xl p-6 bento-card shadow-sm hover:border-black transition">
+                            <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider block mb-2">03 · PERLINDUNGAN</span>
+                            <strong class="text-black text-base block font-bold">Privasi Terjaga</strong>
+                            <p class="text-xs text-[#4B5563] mt-1.5 leading-relaxed">Nomor telepon dan alamat lengkap tidak dipublikasikan pada halaman pelacakan untuk menjaga privasi.</p>
                         </div>
                     </div>
                 </div>
@@ -256,18 +256,104 @@
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                        @foreach (\App\Enums\ShipmentStatus::cases() as $status)
-                            <div class="border border-neutral-200 rounded-xl p-5 flex flex-col justify-between hover:border-black transition">
-                                <div>
-                                    <span class="text-xs font-bold font-mono text-neutral-400 block mb-2">
-                                        {{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }} · {{ $status->value }}
-                                    </span>
-                                    <h3 class="text-base font-bold text-black mb-2">{{ $status->label() }}</h3>
-                                    <p class="text-xs text-[#4B5563] leading-relaxed">{{ $status->description() }}</p>
+                    <!-- Bento Grid Layout: 5 Status Cards (3 + 2) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5">
+                        
+                        <!-- Card 1: 01 DIBUAT -->
+                        <div class="col-span-1 md:col-span-1 lg:col-span-4 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">01 · DIBUAT</span>
+                                    <span class="text-[10px] font-mono bg-neutral-100 text-neutral-700 px-2.5 py-1 rounded-full font-medium">Resi Otomatis</span>
                                 </div>
+                                <h3 class="text-xl font-bold text-black">{{ \App\Enums\ShipmentStatus::DIBUAT->label() }}</h3>
+                                <p class="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
+                                    {{ \App\Enums\ShipmentStatus::DIBUAT->description() }}
+                                </p>
                             </div>
-                        @endforeach
+                            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between">
+                                <span class="font-mono text-xs text-neutral-800 bg-neutral-50 px-2.5 py-1 rounded border border-neutral-200">KC202611...</span>
+                                <span class="text-xs text-neutral-500 font-medium">Format 16 Karakter</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: 02 DIJEMPUT -->
+                        <div class="col-span-1 md:col-span-1 lg:col-span-4 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">02 · DIJEMPUT</span>
+                                    <span class="text-[10px] font-mono bg-neutral-100 text-neutral-700 px-2.5 py-1 rounded-full font-medium">Serah Terima</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-black">{{ \App\Enums\ShipmentStatus::DIJEMPUT->label() }}</h3>
+                                <p class="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
+                                    {{ \App\Enums\ShipmentStatus::DIJEMPUT->description() }}
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
+                                <span>Kurir Lapangan</span>
+                                <span class="font-semibold text-black">Scan Barcode ✓</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: 03 TRANSIT -->
+                        <div class="col-span-1 md:col-span-2 lg:col-span-4 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">03 · TRANSIT</span>
+                                    <span class="text-[10px] font-mono bg-neutral-100 text-neutral-700 px-2.5 py-1 rounded-full font-medium">Lintas Wilayah</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-black">{{ \App\Enums\ShipmentStatus::TRANSIT->label() }}</h3>
+                                <p class="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
+                                    {{ \App\Enums\ShipmentStatus::TRANSIT->description() }}
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
+                                <span>Armada Trans-Jawa</span>
+                                <span class="font-semibold text-black">Sortir Hub Tujuan</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: 04 DIANTAR -->
+                        <div class="col-span-1 md:col-span-1 lg:col-span-6 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">04 · DIANTAR</span>
+                                    <span class="text-[10px] font-mono bg-neutral-100 text-neutral-700 px-2.5 py-1 rounded-full font-medium">Last-Mile</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-black">{{ \App\Enums\ShipmentStatus::DIANTAR->label() }}</h3>
+                                <p class="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
+                                    {{ \App\Enums\ShipmentStatus::DIANTAR->description() }}
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
+                                <span>Rute Alamat Penerima</span>
+                                <span class="font-semibold text-black">Diantar Hari Ini</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: 05 DITERIMA -->
+                        <div class="col-span-1 md:col-span-1 lg:col-span-6 bg-neutral-50 border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">05 · DITERIMA</span>
+                                    <span class="text-[10px] font-mono bg-black text-white px-2.5 py-0.5 rounded-full font-medium">Tahap Akhir</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-black">{{ \App\Enums\ShipmentStatus::DITERIMA->label() }}</h3>
+                                <p class="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
+                                    {{ \App\Enums\ShipmentStatus::DITERIMA->description() }}
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-neutral-200 flex items-center justify-between text-xs text-neutral-600">
+                                <span class="inline-flex items-center gap-1.5 font-semibold text-black">
+                                    <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    Terkonfirmasi
+                                </span>
+                                <span class="font-mono text-xs text-neutral-500">Riwayat Terkunci</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>

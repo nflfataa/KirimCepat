@@ -27,12 +27,10 @@
         <header class="site-header">
             <div class="wrap header-row">
                 <a class="brand" href="{{ route('home') }}">
-                    <span class="brand-mark" aria-hidden="true">
-                        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                        </svg>
-                    </span>
-                    <span class="brand-name">KirimCepat</span>
+                    <svg class="w-6 h-6 text-black shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                    <span class="brand-name text-xs sm:text-sm font-black tracking-[0.24em] uppercase text-black">KirimCepat</span>
                 </a>
 
                 <nav class="site-nav" id="primary-nav" aria-label="Navigasi utama">
@@ -96,12 +94,10 @@
             <div class="wrap footer-main">
                 <div class="footer-brand">
                     <a class="brand" href="{{ route('home') }}">
-                        <span class="brand-mark" aria-hidden="true">
-                            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                            </svg>
-                        </span>
-                        <span class="brand-name">KirimCepat</span>
+                        <svg class="w-5 h-5 text-black shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                        <span class="brand-name text-sm font-black tracking-[0.2em] uppercase text-black">KirimCepat</span>
                     </a>
                     <p>Pengiriman paket di Jawa Timur. Ongkir, resi, dan riwayat status dalam satu alur.</p>
                 </div>

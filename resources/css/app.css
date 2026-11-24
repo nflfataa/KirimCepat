@@ -141,9 +141,11 @@
 
     .brand-name {
         font-family: var(--font-display);
-        font-size: 1.22rem;
-        font-weight: 700;
-        letter-spacing: -0.01em;
+        font-size: 0.875rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: var(--color-ink);
     }
 
     .nav-toggle {
@@ -2102,6 +2104,47 @@
     .animate-slide-delay-3 {
         animation: slideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.32s forwards;
         opacity: 0;
+    }
+
+    /* Skeleton loading shimmer animation */
+    @keyframes skeletonShimmer {
+        0% {
+            background-position: -200% 0;
+        }
+        100% {
+            background-position: 200% 0;
+        }
+    }
+
+    .skeleton-shimmer {
+        background: linear-gradient(
+            90deg,
+            #f3f4f6 0%,
+            #e5e7eb 50%,
+            #f3f4f6 100%
+        );
+        background-size: 200% 100%;
+        animation: skeletonShimmer 1.5s ease-in-out infinite;
+    }
+
+    .skeleton-dark-shimmer {
+        background: linear-gradient(
+            90deg,
+            #1f2937 0%,
+            #374151 50%,
+            #1f2937 100%
+        );
+        background-size: 200% 100%;
+        animation: skeletonShimmer 1.5s ease-in-out infinite;
+    }
+
+    /* Bento Grid enhancements */
+    .bento-card {
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .bento-card:hover {
+        border-color: #111111;
     }
 
     @media (prefers-reduced-motion: reduce) {
