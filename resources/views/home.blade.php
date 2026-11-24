@@ -94,6 +94,10 @@
                     src="{{ asset('images/fleet.png') }}"
                     onerror="this.onerror=null;this.src='{{ asset('images/fleet-unsplash.jpg') }}';"
                     alt="Armada Utama KirimCepat Volvo Trans-Jawa"
+                    width="1290"
+                    height="503"
+                    fetchpriority="high"
+                    decoding="async"
                     class="w-full h-[320px] sm:h-[460px] md:h-[560px] lg:h-[620px] object-cover rounded-2xl object-center border border-neutral-100 shadow-sm"
                 />
             </div>
