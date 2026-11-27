@@ -1,5 +1,5 @@
 <x-layout
-    title="Resi tidak ditemukan"
+    title="KirimCepat"
     description="Nomor resi tidak ditemukan. Periksa kembali 16 karakter nomor resi KirimCepat."
 >
     <div class="wrap wrap-narrow not-found">

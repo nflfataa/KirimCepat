@@ -6,7 +6,7 @@
 
 <x-layout
     :landing="true"
-    title="KirimCepat — Kirim paket lebih cepat, pantau tanpa ribet"
+    title="KirimCepat"
     description="Pembuatan resi otomatis, perhitungan ongkir presisi, dan pelacakan real-time – semua dalam satu platform yang simpel."
 >
     <div class="min-h-screen bg-[#E5E5E5] flex justify-center p-3 sm:p-6 lg:p-8">
@@ -215,120 +215,7 @@
                 </div>
             </section>
 
-            <section class="w-full border-t border-neutral-100 px-6 sm:px-10 lg:px-12 py-16 sm:py-24 bg-white" id="alur">
-                <div class="max-w-6xl mx-auto">
-                    <div class="max-w-2xl mb-12">
-                        <span class="text-xs font-bold tracking-widest uppercase text-neutral-400">Transparansi Status</span>
-                        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black mt-2">Lima status, satu arah.</h2>
-                        <p class="text-[#4B5563] text-base mt-2">
-                            Setiap pembaruan menambah satu entri riwayat berisi status, waktu, nama kurir, dan catatan.
-                            Status tidak bisa mundur, melompat, atau diulang.
-                        </p>
-                    </div>
-
-                    <!-- Bento Grid Layout: 5 Status Cards (3 + 2) -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5">
-                        
-                        <!-- Card 1: 01 DIBUAT -->
-                        <div class="col-span-1 md:col-span-1 lg:col-span-4 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
-                            <div>
-                                <div class="flex items-center justify-between mb-3">
-                                    <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">01 · DIBUAT</span>
-                                    <span class="text-[10px] font-mono bg-neutral-100 text-neutral-700 px-2.5 py-1 rounded-full font-medium">Resi Otomatis</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-black">{{ \App\Enums\ShipmentStatus::DIBUAT->label() }}</h3>
-                                <p class="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
-                                    {{ \App\Enums\ShipmentStatus::DIBUAT->description() }}
-                                </p>
-                            </div>
-                            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between">
-                                <span class="font-mono text-xs text-neutral-800 bg-neutral-50 px-2.5 py-1 rounded border border-neutral-200">KC202611...</span>
-                                <span class="text-xs text-neutral-500 font-medium">Format 16 Karakter</span>
-                            </div>
-                        </div>
-
-                        <!-- Card 2: 02 DIJEMPUT -->
-                        <div class="col-span-1 md:col-span-1 lg:col-span-4 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
-                            <div>
-                                <div class="flex items-center justify-between mb-3">
-                                    <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">02 · DIJEMPUT</span>
-                                    <span class="text-[10px] font-mono bg-neutral-100 text-neutral-700 px-2.5 py-1 rounded-full font-medium">Serah Terima</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-black">{{ \App\Enums\ShipmentStatus::DIJEMPUT->label() }}</h3>
-                                <p class="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
-                                    {{ \App\Enums\ShipmentStatus::DIJEMPUT->description() }}
-                                </p>
-                            </div>
-                            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
-                                <span>Kurir Lapangan</span>
-                                <span class="font-semibold text-black">Scan Barcode ✓</span>
-                            </div>
-                        </div>
-
-                        <!-- Card 3: 03 TRANSIT -->
-                        <div class="col-span-1 md:col-span-2 lg:col-span-4 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
-                            <div>
-                                <div class="flex items-center justify-between mb-3">
-                                    <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">03 · TRANSIT</span>
-                                    <span class="text-[10px] font-mono bg-neutral-100 text-neutral-700 px-2.5 py-1 rounded-full font-medium">Lintas Wilayah</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-black">{{ \App\Enums\ShipmentStatus::TRANSIT->label() }}</h3>
-                                <p class="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
-                                    {{ \App\Enums\ShipmentStatus::TRANSIT->description() }}
-                                </p>
-                            </div>
-                            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
-                                <span>Armada Trans-Jawa</span>
-                                <span class="font-semibold text-black">Sortir Hub Tujuan</span>
-                            </div>
-                        </div>
-
-                        <!-- Card 4: 04 DIANTAR -->
-                        <div class="col-span-1 md:col-span-1 lg:col-span-6 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
-                            <div>
-                                <div class="flex items-center justify-between mb-3">
-                                    <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">04 · DIANTAR</span>
-                                    <span class="text-[10px] font-mono bg-neutral-100 text-neutral-700 px-2.5 py-1 rounded-full font-medium">Last-Mile</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-black">{{ \App\Enums\ShipmentStatus::DIANTAR->label() }}</h3>
-                                <p class="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
-                                    {{ \App\Enums\ShipmentStatus::DIANTAR->description() }}
-                                </p>
-                            </div>
-                            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
-                                <span>Rute Alamat Penerima</span>
-                                <span class="font-semibold text-black">Diantar Hari Ini</span>
-                            </div>
-                        </div>
-
-                        <!-- Card 5: 05 DITERIMA -->
-                        <div class="col-span-1 md:col-span-1 lg:col-span-6 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bento-card shadow-sm hover:border-black transition">
-                            <div>
-                                <div class="flex items-center justify-between mb-3">
-                                    <span class="text-xs font-bold font-mono text-neutral-400 uppercase tracking-wider">05 · DITERIMA</span>
-                                    <span class="text-[10px] font-mono bg-black text-white px-2.5 py-0.5 rounded-full font-medium">Tahap Akhir</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-black">{{ \App\Enums\ShipmentStatus::DITERIMA->label() }}</h3>
-                                <p class="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
-                                    {{ \App\Enums\ShipmentStatus::DITERIMA->description() }}
-                                </p>
-                            </div>
-                            <div class="mt-6 pt-4 border-t border-neutral-200 flex items-center justify-between text-xs text-neutral-600">
-                                <span class="inline-flex items-center gap-1.5 font-semibold text-black">
-                                    <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    Terkonfirmasi
-                                </span>
-                                <span class="font-mono text-xs text-neutral-500">Riwayat Terkunci</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section class="w-full border-t border-neutral-100 px-6 sm:px-10 lg:px-12 py-16 sm:py-24 bg-white" id="tarif">
+            <section class="w-full border-t border-neutral-100 px-6 sm:px-10 lg:px-12 py-16 sm:py-24 bg-neutral-50/50" id="tarif">
                 <div class="max-w-6xl mx-auto">
                     <div class="max-w-2xl mb-10">
                         <span class="text-xs font-bold tracking-widest uppercase text-neutral-400">Jangkauan & Harga</span>
@@ -338,33 +225,432 @@
                         </p>
                     </div>
 
-                    <div class="bg-white border border-neutral-200 rounded-2xl overflow-hidden">
-                        <table class="w-full text-left border-collapse">
-                            <caption class="sr-only">Tarif pengiriman per zona</caption>
-                            <thead>
-                                <tr class="border-b border-neutral-200 bg-neutral-100/60 text-xs font-semibold uppercase tracking-wider text-neutral-600">
-                                    <th scope="col" class="py-4 px-6">Zona</th>
-                                    <th scope="col" class="py-4 px-6">Kota Terjangkau</th>
-                                    <th scope="col" class="py-4 px-6 text-right">Tarif</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-neutral-100 text-sm">
-                                @foreach ($zones as $zone)
-                                    <tr class="hover:bg-neutral-50 transition">
-                                        <th scope="row" class="py-4 px-6 font-semibold text-black whitespace-nowrap">{{ $zone->name }}</th>
-                                        <td class="py-4 px-6 text-[#4B5563]">{{ $zone->cities }}</td>
-                                        <td class="py-4 px-6 text-right font-mono font-semibold text-black whitespace-nowrap">
-                                            {{ \App\Support\Format::rupiah($zone->rate_per_kg) }} / kg
-                                        </td>
+                    <!-- Clean Sharp Non-Rounded Table Card -->
+                    <div class="bg-white border border-neutral-200 rounded-none p-6 sm:p-8 lg:p-10 shadow-xs">
+                        <!-- Card Header: Title with counter & controls (Sharp) -->
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 sm:pb-8 border-b border-neutral-100">
+                            <div class="flex items-center gap-2.5">
+                                <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900">
+                                    Tarif per zona
+                                </h3>
+                                <span class="text-sm font-normal text-neutral-400">
+                                    {{ count($zones) }}
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <!-- Sort dropdown (Sharp) -->
+                                <div class="flex items-center gap-2">
+                                    <label for="sort-zones" class="text-xs text-neutral-400 font-medium">Sort:</label>
+                                    <div class="relative">
+                                        <select
+                                            id="sort-zones"
+                                            class="appearance-none bg-white hover:bg-neutral-50 border border-neutral-200 text-neutral-800 text-xs font-semibold rounded-none pl-3 pr-8 py-2 outline-none cursor-pointer transition focus:ring-1 focus:ring-black focus:border-black"
+                                        >
+                                            <option value="default">Default</option>
+                                            <option value="price-asc">Tarif Terendah</option>
+                                            <option value="price-desc">Tarif Tertinggi</option>
+                                            <option value="name-asc">Nama Zona</option>
+                                        </select>
+                                        <svg class="w-3.5 h-3.5 text-neutral-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- Line / Grid View Toggle (Sharp) -->
+                                <div class="hidden sm:flex items-center p-1 bg-neutral-100 border border-neutral-200/80 rounded-none text-xs font-medium" role="tablist" aria-label="Tampilan tabel">
+                                    <button
+                                        type="button"
+                                        id="btn-view-line"
+                                        class="flex items-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-none shadow-sm transition cursor-pointer"
+                                        aria-selected="true"
+                                        aria-controls="zone-table-container"
+                                    >
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                                        </svg>
+                                        <span>Line</span>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        id="btn-view-grid"
+                                        class="flex items-center gap-1.5 text-neutral-500 hover:text-black px-3 py-1.5 transition cursor-pointer rounded-none"
+                                        aria-selected="false"
+                                        aria-controls="zone-grid-container"
+                                    >
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                                            <rect x="3" y="3" width="7" height="7"></rect>
+                                            <rect x="14" y="3" width="7" height="7"></rect>
+                                            <rect x="14" y="14" width="7" height="7"></rect>
+                                            <rect x="3" y="14" width="7" height="7"></rect>
+                                        </svg>
+                                        <span>Grid</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Table View (Line, Sharp) -->
+                        <div id="zone-table-container" class="overflow-x-auto -mx-6 sm:-mx-8 lg:-mx-10">
+                            <table class="w-full text-left border-collapse min-w-[620px]">
+                                <caption class="sr-only">Tarif pengiriman per zona</caption>
+                                <thead>
+                                    <tr class="text-xs font-normal text-neutral-400 border-b border-neutral-100">
+                                        <th scope="col" class="pb-3.5 pt-2 px-6 sm:px-8 font-normal">Zona</th>
+                                        <th scope="col" class="pb-3.5 pt-2 px-6 font-normal">Kota Terjangkau</th>
+                                        <th scope="col" class="pb-3.5 pt-2 px-6 font-normal">Tarif per Kg</th>
+                                        <th scope="col" class="pb-3.5 pt-2 px-6 font-normal">Status</th>
+                                        <th scope="col" class="pb-3.5 pt-2 px-6 sm:px-8 text-right font-normal sr-only">Aksi</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="zone-table-body" class="divide-y divide-neutral-100 text-sm">
+                                    @foreach ($zones as $zone)
+                                        <tr
+                                            class="hover:bg-neutral-50/80 transition-colors group cursor-default"
+                                            data-zone-name="{{ $zone->name }}"
+                                            data-zone-rate="{{ $zone->rate_per_kg }}"
+                                        >
+                                            <th scope="row" class="py-4 sm:py-4.5 px-6 sm:px-8 font-semibold text-neutral-900 whitespace-nowrap">
+                                                <div class="flex items-center gap-3">
+                                                    <svg class="w-4 h-4 text-neutral-400 group-hover:text-black transition shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                                        <circle cx="12" cy="12" r="10" />
+                                                        <line x1="2" y1="12" x2="22" y2="12" />
+                                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                                    </svg>
+                                                    <span>{{ $zone->name }}</span>
+                                                </div>
+                                            </th>
+                                            <td class="py-4 sm:py-4.5 px-6 text-neutral-500 leading-relaxed">
+                                                {{ $zone->cities }}
+                                            </td>
+                                            <td class="py-4 sm:py-4.5 px-6 whitespace-nowrap">
+                                                <span class="font-mono font-bold text-neutral-900">
+                                                    {{ \App\Support\Format::rupiah($zone->rate_per_kg) }}
+                                                </span>
+                                                <span class="text-neutral-400 text-xs font-normal ml-0.5">/ kg</span>
+                                            </td>
+                                            <td class="py-4 sm:py-4.5 px-6 whitespace-nowrap">
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded-none text-[10px] font-bold tracking-wider uppercase bg-neutral-100 text-neutral-800 border border-neutral-200">
+                                                    AKTIF
+                                                </span>
+                                            </td>
+                                            <td class="py-4 sm:py-4.5 px-6 sm:px-8 text-right whitespace-nowrap">
+                                                <svg class="w-4 h-4 text-neutral-300 group-hover:text-neutral-700 group-hover:translate-x-0.5 transition inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Grid View (Alternate view, Sharp) -->
+                        <div id="zone-grid-container" class="hidden pt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            @foreach ($zones as $zone)
+                                <div
+                                    class="p-5 rounded-none border border-neutral-200 bg-white hover:border-black/50 transition-all flex flex-col justify-between group"
+                                    data-zone-name="{{ $zone->name }}"
+                                    data-zone-rate="{{ $zone->rate_per_kg }}"
+                                >
+                                    <div>
+                                        <div class="flex items-center justify-between gap-3 mb-2">
+                                            <div class="flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-neutral-400 group-hover:text-black transition shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                                    <circle cx="12" cy="12" r="10" />
+                                                    <line x1="2" y1="12" x2="22" y2="12" />
+                                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                                </svg>
+                                                <h4 class="font-bold text-neutral-900 text-base">{{ $zone->name }}</h4>
+                                            </div>
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-none text-[10px] font-bold tracking-wider uppercase bg-neutral-100 text-neutral-800 border border-neutral-200">
+                                                AKTIF
+                                            </span>
+                                        </div>
+                                        <p class="text-xs text-neutral-500 line-clamp-2 leading-relaxed">
+                                            {{ $zone->cities }}
+                                        </p>
+                                    </div>
+                                    <div class="pt-4 mt-4 border-t border-neutral-100 flex items-center justify-between">
+                                        <div>
+                                            <span class="text-[11px] text-neutral-400 block">Tarif pengiriman</span>
+                                            <span class="font-mono font-bold text-neutral-900 text-sm">
+                                                {{ \App\Support\Format::rupiah($zone->rate_per_kg) }}
+                                            </span>
+                                            <span class="text-neutral-400 text-xs">/ kg</span>
+                                        </div>
+                                        <svg class="w-4 h-4 text-neutral-300 group-hover:text-black group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
 
                     <p class="text-xs text-neutral-500 mt-4">
                         Tarif mengikuti konfigurasi zona aktif. Pembulatan dilakukan per kilogram penuh.
                     </p>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const btnLine = document.getElementById('btn-view-line');
+                        const btnGrid = document.getElementById('btn-view-grid');
+                        const lineView = document.getElementById('zone-table-container');
+                        const gridView = document.getElementById('zone-grid-container');
+                        const sortSelect = document.getElementById('sort-zones');
+
+                        if (btnLine && btnGrid && lineView && gridView) {
+                            btnLine.addEventListener('click', function () {
+                                lineView.classList.remove('hidden');
+                                gridView.classList.add('hidden');
+                                btnLine.classList.add('bg-black', 'text-white', 'shadow-sm');
+                                btnLine.classList.remove('text-neutral-500');
+                                btnLine.setAttribute('aria-selected', 'true');
+                                btnGrid.classList.remove('bg-black', 'text-white', 'shadow-sm');
+                                btnGrid.classList.add('text-neutral-500');
+                                btnGrid.setAttribute('aria-selected', 'false');
+                            });
+
+                            btnGrid.addEventListener('click', function () {
+                                lineView.classList.add('hidden');
+                                gridView.classList.remove('hidden');
+                                btnGrid.classList.add('bg-black', 'text-white', 'shadow-sm');
+                                btnGrid.classList.remove('text-neutral-500');
+                                btnGrid.setAttribute('aria-selected', 'true');
+                                btnLine.classList.remove('bg-black', 'text-white', 'shadow-sm');
+                                btnLine.classList.add('text-neutral-500');
+                                btnLine.setAttribute('aria-selected', 'false');
+                            });
+                        }
+
+                        if (sortSelect) {
+                            sortSelect.addEventListener('change', function () {
+                                const criteria = sortSelect.value;
+                                const tableBody = document.getElementById('zone-table-body');
+                                if (!tableBody) return;
+
+                                const rows = Array.from(tableBody.querySelectorAll('tr'));
+                                rows.sort((a, b) => {
+                                    if (criteria === 'price-asc') {
+                                        return Number(a.dataset.zoneRate) - Number(b.dataset.zoneRate);
+                                    } else if (criteria === 'price-desc') {
+                                        return Number(b.dataset.zoneRate) - Number(a.dataset.zoneRate);
+                                    } else if (criteria === 'name-asc') {
+                                        return a.dataset.zoneName.localeCompare(b.dataset.zoneName);
+                                    }
+                                    return 0;
+                                });
+                                rows.forEach(row => tableBody.appendChild(row));
+
+                                if (gridView) {
+                                    const cards = Array.from(gridView.children);
+                                    cards.sort((a, b) => {
+                                        if (criteria === 'price-asc') {
+                                            return Number(a.dataset.zoneRate) - Number(b.dataset.zoneRate);
+                                        } else if (criteria === 'price-desc') {
+                                            return Number(b.dataset.zoneRate) - Number(a.dataset.zoneRate);
+                                        } else if (criteria === 'name-asc') {
+                                            return a.dataset.zoneName.localeCompare(b.dataset.zoneName);
+                                        }
+                                        return 0;
+                                    });
+                                    cards.forEach(card => gridView.appendChild(card));
+                                }
+                            });
+                        }
+                    });
+                </script>
+            </section>
+
+            <section class="w-full border-t border-neutral-100 px-4 sm:px-8 lg:px-12 py-16 sm:py-24 bg-white" id="alur">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+                        <span class="text-xs font-bold tracking-widest uppercase text-neutral-400">Transparansi Status</span>
+                        <h2 class="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold tracking-tight text-black mt-2">
+                            Status Pengiriman Paket
+                        </h2>
+                        <p class="text-[#4B5563] text-base sm:text-lg mt-3 font-normal leading-relaxed">
+                            Pantau pergerakan pengiriman dengan kepastian estimasi waktu. Lima status berurutan satu arah tanpa lompatan atau pembatalan sepihak.
+                        </p>
+                    </div>
+
+                    <!-- Delivery Status Progress Tracker (Reference Style) -->
+                    <div class="bg-white p-2 sm:p-6 lg:p-8">
+                        
+                        <!-- Desktop / Tablet Horizontal Stepper -->
+                        <div class="hidden md:block">
+                            <div class="relative flex items-start justify-between">
+                                <!-- Connecting Line behind circles -->
+                                <div class="absolute top-6 lg:top-7 left-[10%] right-[10%] h-[2px] bg-black -z-0" aria-hidden="true"></div>
+
+                                <!-- Step 1: Pesanan Dibuat -->
+                                <div class="relative z-10 flex flex-col items-center text-center w-1/5 px-2">
+                                    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-black border-2 border-black flex items-center justify-center shadow-sm">
+                                        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="20 6 9 17 4 12" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-sm lg:text-base font-bold text-black mt-4">
+                                        {{ \App\Enums\ShipmentStatus::DIBUAT->label() }}
+                                    </h3>
+                                    <p class="text-xs text-neutral-500 mt-1 leading-snug">
+                                        Resi terbit otomatis<br>
+                                        <span class="font-mono text-[11px] text-neutral-400">Tahap 01</span>
+                                    </p>
+                                </div>
+
+                                <!-- Step 2: Dijemput Kurir -->
+                                <div class="relative z-10 flex flex-col items-center text-center w-1/5 px-2">
+                                    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-black border-2 border-black flex items-center justify-center shadow-sm">
+                                        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="20 6 9 17 4 12" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-sm lg:text-base font-bold text-black mt-4">
+                                        {{ \App\Enums\ShipmentStatus::DIJEMPUT->label() }}
+                                    </h3>
+                                    <p class="text-xs text-neutral-500 mt-1 leading-snug">
+                                        Paket diambil kurir<br>
+                                        <span class="font-mono text-[11px] text-neutral-400">Tahap 02</span>
+                                    </p>
+                                </div>
+
+                                <!-- Step 3: Dalam Transit -->
+                                <div class="relative z-10 flex flex-col items-center text-center w-1/5 px-2">
+                                    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-black border-2 border-black flex items-center justify-center shadow-sm">
+                                        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="20 6 9 17 4 12" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-sm lg:text-base font-bold text-black mt-4">
+                                        {{ \App\Enums\ShipmentStatus::TRANSIT->label() }}
+                                    </h3>
+                                    <p class="text-xs text-neutral-500 mt-1 leading-snug">
+                                        Sortir hub Trans-Jawa<br>
+                                        <span class="font-mono text-[11px] text-neutral-400">Tahap 03</span>
+                                    </p>
+                                </div>
+
+                                <!-- Step 4: Sedang Diantar (In-Progress Clock Icon from Reference) -->
+                                <div class="relative z-10 flex flex-col items-center text-center w-1/5 px-2">
+                                    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-black border-2 border-black flex items-center justify-center shadow-sm">
+                                        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <polyline points="12 6 12 12 16 14" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-sm lg:text-base font-bold text-black mt-4">
+                                        {{ \App\Enums\ShipmentStatus::DIANTAR->label() }}
+                                    </h3>
+                                    <p class="text-xs text-neutral-500 mt-1 leading-snug">
+                                        Kurir menuju alamat<br>
+                                        <span class="font-mono text-[11px] text-neutral-400">Tahap 04</span>
+                                    </p>
+                                </div>
+
+                                <!-- Step 5: Diterima (Expected Destination) -->
+                                <div class="relative z-10 flex flex-col items-center text-center w-1/5 px-2">
+                                    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white border-2 border-black flex items-center justify-center shadow-sm">
+                                        <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                                            <path d="m3.3 7 8.7 5 8.7-5" />
+                                            <path d="M12 22V12" />
+                                            <path d="m7.5 4.27 9 5.15" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-sm lg:text-base font-bold text-black mt-4">
+                                        {{ \App\Enums\ShipmentStatus::DITERIMA->label() }}
+                                    </h3>
+                                    <p class="text-xs text-neutral-500 mt-1 leading-snug">
+                                        Terkonfirmasi penerima<br>
+                                        <span class="font-mono text-[11px] text-neutral-400">Tahap 05</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Vertical Stepper -->
+                        <div class="md:hidden space-y-6 relative pl-4 before:absolute before:top-4 before:bottom-4 before:left-[27px] before:w-[2px] before:bg-black">
+                            <!-- Step 1 -->
+                            <div class="relative flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-black border-2 border-black flex items-center justify-center shrink-0 z-10 shadow-sm">
+                                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                </div>
+                                <div class="pt-0.5">
+                                    <span class="font-mono text-[11px] text-neutral-400 uppercase tracking-wider block">Tahap 01 · DIBUAT</span>
+                                    <h3 class="text-base font-bold text-black">{{ \App\Enums\ShipmentStatus::DIBUAT->label() }}</h3>
+                                    <p class="text-xs text-[#4B5563] mt-1">{{ \App\Enums\ShipmentStatus::DIBUAT->description() }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="relative flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-black border-2 border-black flex items-center justify-center shrink-0 z-10 shadow-sm">
+                                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                </div>
+                                <div class="pt-0.5">
+                                    <span class="font-mono text-[11px] text-neutral-400 uppercase tracking-wider block">Tahap 02 · DIJEMPUT</span>
+                                    <h3 class="text-base font-bold text-black">{{ \App\Enums\ShipmentStatus::DIJEMPUT->label() }}</h3>
+                                    <p class="text-xs text-[#4B5563] mt-1">{{ \App\Enums\ShipmentStatus::DIJEMPUT->description() }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="relative flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-black border-2 border-black flex items-center justify-center shrink-0 z-10 shadow-sm">
+                                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                </div>
+                                <div class="pt-0.5">
+                                    <span class="font-mono text-[11px] text-neutral-400 uppercase tracking-wider block">Tahap 03 · TRANSIT</span>
+                                    <h3 class="text-base font-bold text-black">{{ \App\Enums\ShipmentStatus::TRANSIT->label() }}</h3>
+                                    <p class="text-xs text-[#4B5563] mt-1">{{ \App\Enums\ShipmentStatus::TRANSIT->description() }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="relative flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-black border-2 border-black flex items-center justify-center shrink-0 z-10 shadow-sm">
+                                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg>
+                                </div>
+                                <div class="pt-0.5">
+                                    <span class="font-mono text-[11px] text-neutral-400 uppercase tracking-wider block">Tahap 04 · DIANTAR</span>
+                                    <h3 class="text-base font-bold text-black">{{ \App\Enums\ShipmentStatus::DIANTAR->label() }}</h3>
+                                    <p class="text-xs text-[#4B5563] mt-1">{{ \App\Enums\ShipmentStatus::DIANTAR->description() }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 5 -->
+                            <div class="relative flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white border-2 border-black flex items-center justify-center shrink-0 z-10 shadow-sm">
+                                    <svg class="w-5 h-5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                                        <path d="m3.3 7 8.7 5 8.7-5" />
+                                        <path d="M12 22V12" />
+                                        <path d="m7.5 4.27 9 5.15" />
+                                    </svg>
+                                </div>
+                                <div class="pt-0.5">
+                                    <span class="font-mono text-[11px] text-neutral-400 uppercase tracking-wider block">Tahap 05 · DITERIMA</span>
+                                    <h3 class="text-base font-bold text-black">{{ \App\Enums\ShipmentStatus::DITERIMA->label() }}</h3>
+                                    <p class="text-xs text-[#4B5563] mt-1">{{ \App\Enums\ShipmentStatus::DITERIMA->description() }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -394,7 +680,7 @@
                             <strong class="text-black block text-xs uppercase tracking-wider mb-1">Informasi</strong>
                             <div><a href="#alur" class="hover:text-black">Alur Status</a></div>
                             <div><a href="#tarif" class="hover:text-black">Daftar Tarif Zona</a></div>
-                            <div><a href="{{ url('/health') }}" class="hover:text-black">Status Sistem</a></div>
+                            <div><a href="{{ url('/health') }}" class="hover:text-black"></a></div>
                         </div>
 
                         <div class="space-y-2">

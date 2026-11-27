@@ -1,5 +1,5 @@
 <x-layout
-    title="Status sistem"
+    title="KirimCepat"
     description="Pemeriksaan koneksi database dan endpoint kesehatan KirimCepat."
 >
     <div class="page-head">

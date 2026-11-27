@@ -1,5 +1,5 @@
 <x-layout
-    title="Panel kurir"
+    title="KirimCepat"
     description="Perbarui status paket yang sedang ditangani."
 >
     <div class="page-head">

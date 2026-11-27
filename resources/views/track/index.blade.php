@@ -1,5 +1,5 @@
 <x-layout
-    title="Lacak resi"
+    title="KirimCepat"
     description="Masukkan nomor resi KirimCepat untuk melihat status paket dan riwayatnya tanpa login."
 >
     <div class="page-head">

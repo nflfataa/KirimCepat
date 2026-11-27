@@ -30,4 +30,15 @@ class HomePageTest extends TestCase
             ->assertOk()
             ->assertSee('value="2.3"', false);
     }
+
+    public function test_pages_use_kirimcepat_only_as_document_title(): void
+    {
+        Zone::create(['name' => 'Zona 1', 'cities' => 'Surabaya', 'rate_per_kg' => 8_000]);
+
+        foreach (['/', '/kirim', '/lacak', '/kurir/masuk', '/health'] as $path) {
+            $this->get($path)
+                ->assertOk()
+                ->assertSee('<title>KirimCepat</title>', false);
+        }
+    }
 }

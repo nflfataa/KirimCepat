@@ -7,7 +7,7 @@
 @endphp
 
 <x-layout
-    title="Resi {{ $shipment->tracking_number }}"
+    title="KirimCepat"
     description="Pengiriman tersimpan. Simpan nomor resi untuk melacak paket."
 >
     <div class="wrap wrap-narrow receipt-wrap">

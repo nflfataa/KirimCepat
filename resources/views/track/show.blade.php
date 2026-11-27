@@ -4,7 +4,7 @@
 @endphp
 
 <x-layout
-    title="Resi {{ $shipment->tracking_number }}"
+    title="KirimCepat"
     description="Status dan riwayat paket {{ $shipment->tracking_number }}."
 >
     <div class="page-head">

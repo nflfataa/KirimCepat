@@ -5,7 +5,7 @@
 @endphp
 
 <x-layout
-    title="Buat pengiriman"
+    title="KirimCepat"
     description="Isi data pengirim, penerima, dan paket. Ongkir dihitung saat pengiriman disimpan dan nomor resi diterbitkan otomatis."
 >
     <div class="page-head">

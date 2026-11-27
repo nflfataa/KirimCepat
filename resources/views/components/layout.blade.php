@@ -1,5 +1,5 @@
 @props([
-    'title' => null,
+    'title' => 'KirimCepat',
     'description' => 'KirimCepat menghitung ongkir dari berat aktual dan volumetrik, menerbitkan nomor resi otomatis, dan menampilkan riwayat status paket tanpa login.',
     'landing' => false,
 ])
@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ? $title.' — KirimCepat' : 'KirimCepat — Hitung ongkir, kirim paket, lacak resi' }}</title>
+    <title>KirimCepat</title>
     <meta name="description" content="{{ $description }}">
     <meta name="theme-color" content="#111111">
     <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
@@ -51,7 +51,7 @@
                             </form>
                         @else
                             <a class="nav-login" href="{{ route('kurir.masuk') }}">Masuk kurir</a>
-                            @if (! request()->routeIs('shipments.create'))
+                            @if (! request()->routeIs('shipments.*') && ! request()->routeIs('kurir.*'))
                                 <a class="btn btn-primary btn-small" href="{{ route('shipments.create') }}">Kirim paket</a>
                             @endif
                         @endauth
@@ -67,7 +67,7 @@
                         </form>
                     @else
                         <a class="nav-login" href="{{ route('kurir.masuk') }}">Masuk kurir</a>
-                        @if (! request()->routeIs('shipments.create'))
+                        @if (! request()->routeIs('shipments.*') && ! request()->routeIs('kurir.*'))
                             <a class="btn btn-primary btn-small" href="{{ route('shipments.create') }}">Kirim paket</a>
                         @endif
                     @endauth
@@ -108,7 +108,7 @@
                         <a href="{{ route('track.index') }}">Lacak resi</a>
                     @endif
                     <a href="{{ route('kurir.masuk') }}">Masuk kurir</a>
-                    <a href="{{ url('/health') }}">Status sistem</a>
+                    <a href="{{ url('/health') }}"></a>
                 </nav>
             </div>
 
