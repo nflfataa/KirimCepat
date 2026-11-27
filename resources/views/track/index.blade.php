@@ -7,7 +7,7 @@
             <nav class="crumbs" aria-label="Remah roti">
                 <a href="{{ route('home') }}">Beranda</a>
                 <span aria-hidden="true"> / </span>
-                <span aria-current="page">Lacak resi</span>
+                <span aria-current="page">Lacak</span>
             </nav>
 
             <h1>Lacak resi</h1>

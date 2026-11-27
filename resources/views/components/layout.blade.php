@@ -37,7 +37,7 @@
                     <div class="nav-links">
                         <a href="{{ route('home') }}">Beranda</a>
                         <a href="{{ route('shipments.create') }}" @if (request()->routeIs('shipments.*')) aria-current="page" @endif>Kirim paket</a>
-                        @if (! request()->routeIs('shipments.*') && ! request()->routeIs('kurir.*'))
+                        @if (! request()->routeIs('kurir.*'))
                             <a href="{{ route('track.index') }}" @if (request()->routeIs('track.*')) aria-current="page" @endif>Lacak resi</a>
                         @endif
                     </div>
